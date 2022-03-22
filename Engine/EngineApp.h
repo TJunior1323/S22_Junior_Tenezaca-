@@ -10,6 +10,9 @@ namespace Engine
 	public:
 		void Run();
 		virtual void OnUpdate();
+
+	private:
+
 	};
 
 }
