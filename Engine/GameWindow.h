@@ -1,10 +1,11 @@
 #pragma once
 
 #include "WindowImplementation.h"
+#include "EngineUtil.h"
 
 namespace Engine
 {
-	class GameWindow
+	class ENGINE_API GameWindow
 	{
 	public:
 		static void Init();
