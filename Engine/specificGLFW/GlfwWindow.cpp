@@ -1,16 +1,19 @@
 #include "pch.h"
 
-#include "GameWindow.h"
+//#include "GameWindow.h"
 #include "GlfwWindow.h"
 #include "EngineUtil.h"
+#include "glad/glad.h"
 
 namespace Engine
 {
 
 	GlfwWindow::GlfwWindow()
 	{
-		if(!glfwInit())
+		if (!glfwInit())
 			ENGINE_LOG("ERROR: GLFW failed to initiualize!");
+
+
 	}
 
 	bool GlfwWindow::CreateWindow(int width, int height, const std::string& windowName)
@@ -25,6 +28,9 @@ namespace Engine
 		
 		glfwMakeContextCurrent(mGlfwWindow);
 		return true;
+
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+			ENGINE_LOG("Glad failed to initialize");
 
 	}
 
