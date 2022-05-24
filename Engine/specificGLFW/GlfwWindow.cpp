@@ -27,10 +27,12 @@ namespace Engine
 		}
 		
 		glfwMakeContextCurrent(mGlfwWindow);
-		return true;
+		
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 			ENGINE_LOG("Glad failed to initialize");
+
+		return true;
 
 	}
 

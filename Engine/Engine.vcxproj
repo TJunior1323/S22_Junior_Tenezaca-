@@ -163,7 +163,13 @@
     <ClInclude Include="EngineApp.h" />
     <ClInclude Include="EngineUtil.h" />
     <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RendererImplementation.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShaderImplementation.h" />
     <ClInclude Include="specificGLFW\GlfwWindow.h" />
+    <ClInclude Include="specificOpenGL\OpenGLRenderer.h" />
+    <ClInclude Include="specificOpenGL\OpenGLShader.h" />
     <ClInclude Include="specificOpenGL\OpenGLSprite.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteImplementation.h" />
@@ -179,7 +185,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="specificGLFW\GlfwWindow.cpp" />
+    <ClCompile Include="specificOpenGL\OpenGLRenderer.cpp" />
+    <ClCompile Include="specificOpenGL\OpenGLShader.cpp" />
     <ClCompile Include="specificOpenGL\OpenGLSprite.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>

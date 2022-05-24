@@ -8,11 +8,20 @@ namespace Engine
 {
 	OpenGLSprite::OpenGLSprite(const std::string& file)
 	{
+		stbi_set_flip_vertically_on_load(true);
+
+		//int mWidth,mHeight, numChannels;
+		int numChannels;
+		unsigned char* data = stbi_load(file.c_str(), &mWidth, &mHeight, &numChannels, 0);
+
+		//if (data == NULL)
+		//	ENGINE_LOG("ERROR: texture didn't load");
+
 		float vertices[] = {
-	-0.5f, -0.5f, 0.0f, 0.0f,		//Bottom Left
-	-0.5f,  0.5f, 0.0f, 1.0f,		//Top left
-	 0.5f,  0.5f, 1.0f, 1.0f,		// Top Right
-	 0.5f, -0.5f, 1.0f, 0.0f		//Bottom Right
+			 0.0f,				0.0f,			0.0f, 0.0f,		//Bottom Left
+			 0.0f,				(float)mHeight, 0.0f, 1.0f,		//Top left
+			 (float)mWidth,		(float)mHeight, 1.0f, 1.0f,		// Top Right
+			 (float)mWidth,		0.0f,			1.0f, 0.0f		//Bottom Right
 		};
 
 		unsigned int indices[] = {
@@ -47,14 +56,6 @@ namespace Engine
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		stbi_set_flip_vertically_on_load(true);
-
-		int mWidth,mHeight, numChannels;
-		unsigned char* data = stbi_load(file.c_str() , &mWidth, &mHeight, &numChannels, 0);
-
-		if (data == NULL)
-			ENGINE_LOG("ERROR: texture didn't load");
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mWidth, mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
