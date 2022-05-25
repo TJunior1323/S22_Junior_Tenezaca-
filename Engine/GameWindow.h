@@ -2,6 +2,7 @@
 
 #include "WindowImplementation.h"
 #include "EngineUtil.h"
+#include "Events.h"
 
 namespace Engine
 {
@@ -16,6 +17,10 @@ namespace Engine
 		void CollectEvents();
 		int GetWidth() const;
 		int GetHeight() const;
+
+		void SetKeyPressedCallback(const std::function<void(const KeyPressedEvents&)>& keyPressedCallback);
+		void SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvents&)>& keyReleasedCallback);
+
 
 
 	private:

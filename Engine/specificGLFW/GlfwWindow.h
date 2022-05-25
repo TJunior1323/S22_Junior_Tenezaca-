@@ -3,6 +3,7 @@
 #include "../WindowImplementation.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
+#include "Events.h"
 
 namespace Engine
 {
@@ -17,8 +18,18 @@ namespace Engine
 		virtual int GetHeight() const override;
 		~GlfwWindow();
 
+		virtual void SetKeyPressedCallback(std::function<void(const KeyPressedEvents&)> keyPressedCallback) override;
+		virtual void SetKeyReleasedCallback(std::function<void(const KeyReleasedEvents&)> keyReleasedCallback) override;
+
 	private:
-		GLFWwindow* mGlfwWindow;
+
+		struct Callbacks
+		{
+			std::function<void(const KeyPressedEvents&)> keyPressedCallback{ [](const KeyPressedEvents&) {} };
+			std::function<void(const KeyReleasedEvents&)> keyReleasedCallback{ [](const KeyReleasedEvents&) {} };
+		} mCallbacks;
+
+		GLFWwindow* mGlfwWindow{ nullptr };
 
 
 	};

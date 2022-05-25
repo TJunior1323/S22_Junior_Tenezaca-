@@ -162,7 +162,9 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="EngineApp.h" />
     <ClInclude Include="EngineUtil.h" />
+    <ClInclude Include="Events.h" />
     <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="KeyCodes.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RendererImplementation.h" />
     <ClInclude Include="Shader.h" />
@@ -178,6 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EngineApp.cpp" />
+    <ClCompile Include="Events.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

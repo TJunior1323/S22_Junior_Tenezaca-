@@ -3,16 +3,18 @@
 #include "Sprite.h"
 #include "Shader.h"
 #include "RendererImplementation.h"
+#include "EngineUtil.h"
 
 namespace Engine
 {
 
 
-	class Renderer
+	class ENGINE_API Renderer
 	{
 	public:
 		static void Init();
 		static void Draw(Engine::Sprite& picture, int xPos, int yPos, int zPos);
+		static void ClearScreen();
 
 
 	private:

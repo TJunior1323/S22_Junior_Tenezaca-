@@ -17,7 +17,7 @@ namespace Engine
 
 	bool GameWindow::CreateWindow(int width, int height, const std::string& windowName)
 	{
-		return mWindow->CreateWindow(800, 600, "Project 2022");
+		return mWindow->CreateWindow(width, height, "Project 2022");
 	}
 
 	void GameWindow::SwapBuffers()
@@ -38,6 +38,16 @@ namespace Engine
 	int GameWindow::GetHeight() const
 	{
 		return mWindow->GetHeight();
+	}
+
+	void GameWindow::SetKeyPressedCallback(const std::function<void(const KeyPressedEvents&)>& keyPressedCallback)
+	{
+		mWindow->SetKeyPressedCallback(keyPressedCallback);
+	}
+
+	void GameWindow::SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvents&)>& keyReleasedCallback)
+	{
+		mWindow->SetKeyReleasedCallback(keyReleasedCallback);
 	}
 
 	GameWindow::GameWindow()

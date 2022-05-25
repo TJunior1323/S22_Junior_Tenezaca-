@@ -27,10 +27,34 @@ namespace Engine
 		}
 		
 		glfwMakeContextCurrent(mGlfwWindow);
+		glfwSwapInterval(1);
 		
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 			ENGINE_LOG("Glad failed to initialize");
+
+		glfwSetWindowUserPointer(mGlfwWindow, &mCallbacks);
+
+		glfwSetKeyCallback(mGlfwWindow, [](GLFWwindow* window, int key, int scancode, int action, int mods)
+			{
+				if (action == GLFW_PRESS || action == GLFW_REPEAT)
+				{
+					Callbacks* userPointer{ (Callbacks*)glfwGetWindowUserPointer(window) };
+
+					KeyPressedEvents event{ key };
+					userPointer->keyPressedCallback(event);
+				}
+				else if (action == GLFW_RELEASE)
+				{
+					Callbacks* userPointer{ (Callbacks*)glfwGetWindowUserPointer(window) };
+
+					KeyReleasedEvents event{ key };
+					userPointer->keyReleasedCallback(event);
+				}
+
+			}
+		);
+
 
 		return true;
 
@@ -67,8 +91,15 @@ namespace Engine
 		glfwTerminate();
 	}
 
+	void GlfwWindow::SetKeyPressedCallback(std::function<void(const KeyPressedEvents&)> keyPressedCallback)
+	{
+		mCallbacks.keyPressedCallback = keyPressedCallback;
+	}
 
-
+	void GlfwWindow::SetKeyReleasedCallback(std::function<void(const KeyReleasedEvents&)> keyReleasedCallback)
+	{
+		mCallbacks.keyReleasedCallback = keyReleasedCallback;
+	}
 
 
 }

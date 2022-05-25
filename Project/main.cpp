@@ -1,8 +1,5 @@
 #include "Engine.h"
 	
-class ProjectApp : public Engine::EngineApp
-{
-
-};
+#include "ProjectApp.h"
 
 ENGINE_APPLICATION_START(ProjectApp)

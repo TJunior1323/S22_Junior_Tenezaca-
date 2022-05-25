@@ -18,6 +18,11 @@ namespace Engine
 		mInstance->mImplementation->Draw(picture, xPos, yPos, zPos, mInstance->mShader);
 	}
 
+	void Renderer::ClearScreen()
+	{
+		mInstance->mImplementation->ClearScreen();
+	}
+
 	Renderer::Renderer(): 
 		mShader("../Engine/Assets/Shaders/defaultVertex.glsl","../Engine/Assets/Shaders/defaultFragment.glsl")
 	{

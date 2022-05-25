@@ -8,6 +8,6 @@ namespace Engine
 	{
 	public:
 		virtual void Draw(Engine::Sprite& picture, int xPos, int yPos, int zPos, Engine::Shader shader) override;
-
+		virtual void ClearScreen() override;
 	};
 }

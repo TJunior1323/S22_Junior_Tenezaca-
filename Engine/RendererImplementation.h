@@ -10,5 +10,6 @@ namespace Engine
 	{
 	public:
 		virtual void Draw(Engine::Sprite& picutre, int xPos, int yPos, int zPos, Engine::Shader shader) = 0;
+		virtual void ClearScreen() = 0;
 	};
 }
